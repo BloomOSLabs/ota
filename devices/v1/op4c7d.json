@@ -1,0 +1,13 @@
+{
+  "response": [
+    {
+      "datetime": 1781071011,
+      "filename": "BloomOS-1.0-OP4C7D-20260610.zip",
+      "id": "sha256_here",
+      "romtype": "UNOFFICIAL",
+      "size": 1234567890,
+      "url": "https://github.com/BloomOSLabs/releases/download/v1.0/BloomOS-1.0-OP4C7D-20260610.zip",
+      "version": "1.0"
+    }
+  ]
+}

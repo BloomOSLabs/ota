@@ -1,0 +1,12 @@
+Initial BloomOS release
+
+Fixed:
+- WiFi
+- Bluetooth
+- IMS detection
+- Vendor manifest issues
+
+Known issues:
+- Auto brightness
+- Intermittent vibration
+- Fingerprint unavailable
