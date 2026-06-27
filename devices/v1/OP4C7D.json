@@ -2,11 +2,11 @@
   "response": [
     {
       "datetime": 1781071011,
-      "filename": "BloomOS-1.0-OP4C7D-20260610.zip",
+      "filename": "BloomOS-1.0-EXPERIMENTAL-OP4C7D-20260618.zip",
       "id": "sha256_here",
-      "romtype": "UNOFFICIAL",
+      "romtype": "EXPERIMENTAL",
       "size": 1234567890,
-      "url": "https://github.com/BloomOSLabs/releases/download/v1.0/BloomOS-1.0-OP4C7D-20260610.zip",
+      "url": "https://sourceforge.net/projects/bloomoslabs/files/OP4C7D/1.0/BloomOS-1.0-EXPERIMENTAL-OP4C7D-20260618.zip/download",
       "version": "1.0"
     }
   ]
