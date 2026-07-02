@@ -2,9 +2,9 @@
   {
     "version": "1.0",
     "releaseType": "EXPERIMENTAL",
-    "releaseDate": "2026-06-18",
+    "releaseDate": "2026-07-02",
     "androidVersion": "9",
-    "securityPatch": "June 2026",
+    "securityPatch": "July 2026",
     "changelog": [
       "Initial BloomOS release for OPPO A31 (OP4C7D / CPH2015).",
       "Rebranded LineageOS 16 to BloomOS.",
@@ -17,10 +17,11 @@
       "Hardware-accelerated graphics enabled.",
       "OTA updater infrastructure integrated.",
       "Documentation and installation guides available.",
-      "General stability and performance improvements."
+      "General stability and performance improvements.",
+      "SIM detection, mobile data and LTE working."
     ],
     "knownIssues": [
-      "Cellular service (SIM/RIL) is temporarily unavailable.",
+      "VoLTE, VoIP, VoWiFi, SMS, RCS are unavailable.",
       "Vibration may not function consistently across all scenarios."
     ]
   }

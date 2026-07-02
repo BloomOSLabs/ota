@@ -1,5 +1,3 @@
----
-
 # release.py
 
 Uploads BloomOS OTA packages to SourceForge.
