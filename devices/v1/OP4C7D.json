@@ -1,12 +1,12 @@
 {
   "response": [
     {
-      "datetime": 1781071011,
-      "filename": "BloomOS-1.0-EXPERIMENTAL-OP4C7D-20260618.zip",
-      "id": "sha256_here",
+      "datetime": 1782974927,
+      "filename": "BloomOS-1.0-EXPERIMENTAL-OP4C7D-20260702.zip",
+      "id": "3cfc18b868106590bd8eb8038da69df0695cd34915fbbccd58dba2969678980b",
       "romtype": "EXPERIMENTAL",
-      "size": 1234567890,
-      "url": "https://sourceforge.net/projects/bloomoslabs/files/OP4C7D/1.0/BloomOS-1.0-EXPERIMENTAL-OP4C7D-20260618.zip/download",
+      "size": 1021368899,
+      "url": "https://sourceforge.net/projects/bloomoslabs/files/OP4C7D/1.0/BloomOS-1.0-EXPERIMENTAL-OP4C7D-20260702.zip/download",
       "version": "1.0"
     }
   ]

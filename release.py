@@ -55,13 +55,51 @@ def main():
         help="Print the rsync command without uploading"
     )
 
+    parser.add_argument(
+        "--generate-json",
+        action="store_true",
+        help="Run generate_ota_json.py after a successful upload"
+    )
+    
+    parser.add_argument(
+        "--build-prop",
+        help="Path to build.prop for OTA metadata generation"
+    )
+
     args = parser.parse_args()
-
-    device = args.device or ask("Device")
-    version = args.version or ask("Version")
-    zip_input = args.zip_path or ask("Path to OTA ZIP")
-
-    zip_path = Path(zip_input).expanduser().resolve()
+    
+    if args.dry_run:
+        print("Dry run enabled.")
+        print()
+        missing = []
+    
+        if not args.device:
+            missing.append("--device")
+    
+        if not args.version:
+            missing.append("--version")
+    
+        if not args.zip_path:
+            missing.append("--zip")
+    
+        if args.generate_json and not args.build_prop:
+            missing.append("--build-prop")
+    
+        if missing:
+            parser.error(
+                "--dry-run requires the following arguments: "
+                + ", ".join(missing)
+            )
+    
+        device = args.device
+        version = args.version
+        zip_path = Path(args.zip_path).expanduser().resolve()
+    
+    else:
+        device = args.device or ask("Device")
+        version = args.version or ask("Version")
+        zip_input = args.zip_path or ask("Path to OTA ZIP")
+        zip_path = Path(zip_input).expanduser().resolve()
 
     if not zip_path.exists():
         print(f"\nError: File not found:\n{zip_path}")
@@ -86,6 +124,7 @@ def main():
         f"{zip_path.name}"
     )
 
+    
     command = [
         "rsync",
         "-avP",
@@ -104,27 +143,51 @@ def main():
     print(f"Remote Path  : {remote}")
     print()
 
-    if args.dry_run:
-        print("Dry run enabled.")
-        print()
-        print("Command:")
-        print(" ".join(command))
-        print()
-        print("Download URL:")
-        print(download_url)
-        return
+    if not args.dry_run:
+        try:
+            subprocess.run(command, check=True)
+            print()
+            print("Upload complete.")
+            print()
+        except subprocess.CalledProcessError:
+            print("\nUpload failed.")
+            sys.exit(1)
 
-    try:
-        subprocess.run(command, check=True)
-    except subprocess.CalledProcessError:
-        print("\nUpload failed.")
-        sys.exit(1)
 
-    print()
-    print("Upload complete.")
+    print("Upload command:")
+    print(" ".join(command))
     print()
     print("Download URL:")
     print(download_url)
+
+    if args.dry_run:    
+        generate = args.generate_json
+    
+        if not generate:
+            response = input(
+                "\nGenerate OTA metadata now? [y/N]: "
+            ).strip().lower()
+            generate = response == "y"
+    
+        if generate:
+            script = Path(__file__).parent / "generate_ota_json.py"
+    
+            command = [
+                sys.executable,
+                str(script),
+                "--zip",
+                str(zip_path),
+                "--build-prop",
+                args.build_prop,
+                "--project",
+                args.project,
+                "--dry-run",
+            ]
+    
+            print()
+            subprocess.run(command, check=True)
+    
+        return
 
 
 if __name__ == "__main__":
